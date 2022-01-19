@@ -1,0 +1,285 @@
+{
+    "sheets": [
+        {
+            "name": "equipment",
+            "description": "Equippables for the player",
+            "displayColumn": "id",
+            "guid": "9f8d5891-5eb8-42bf-a601-b8c07aa8af7d",
+            "columns": [
+                {
+                    "typeStr": "enum",
+                    "guid": "ec4c13f6-66c6-41a7-8e27-1c8e37f30cb3",
+                    "name": "type",
+                    "description": "The type of equipment",
+                    "options": "weapon, chest, head, shield, legs, feet, necklace, ring",
+                    "defaultValue": "weapon",
+                    "iconName": "newEnum",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "text",
+                        "options": "text"
+                    }
+                },
+                {
+                    "typeStr": "enum",
+                    "guid": "53d25bce-0f67-47ee-9e76-e10d0b6396e8",
+                    "name": "attribute",
+                    "description": "Which attribute this equipment augments",
+                    "options": "damage, defense, health, attack-speed",
+                    "defaultValue": "",
+                    "iconName": "newEnum",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "defaultValue": "text",
+                        "options": "text"
+                    }
+                },
+                {
+                    "typeStr": "float",
+                    "guid": "c040b782-5469-41fd-93fa-65d493660b7e",
+                    "description": "How much we alter the attribute by",
+                    "name": "attribute-amount",
+                    "min": 0,
+                    "max": 100000,
+                    "defaultValue": 1,
+                    "iconName": "newFloat",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "float",
+                        "max": "float",
+                        "defaultValue": "float"
+                    }
+                }
+            ],
+            "lines": [
+                {
+                    "guid": "71f450de-5763-4829-bb0a-8b803661c998",
+                    "id": "wooden-sword",
+                    "type": "weapon",
+                    "attribute": "damage",
+                    "attribute-amount": 1
+                },
+                {
+                    "guid": "5abdf886-d267-4db6-be58-266afb834082",
+                    "id": "wooden-shield",
+                    "type": "shield",
+                    "attribute": "defense",
+                    "attribute-amount": 1
+                },
+                {
+                    "guid": "939fb795-194b-40e2-b215-0dd0c5cc8b52",
+                    "id": "leather-helm",
+                    "type": "head",
+                    "attribute": "defense",
+                    "attribute-amount": 1
+                },
+                {
+                    "guid": "0748f451-8062-4aa2-9b8f-55e1f62554f8",
+                    "id": "leather-breastplate",
+                    "type": "chest",
+                    "attribute": "defense",
+                    "attribute-amount": 1
+                },
+                {
+                    "guid": "18863ad0-d51e-4975-93f7-8b4eec9b8e44",
+                    "id": "leather-boots",
+                    "type": "feet",
+                    "attribute": "defense",
+                    "attribute-amount": 1
+                },
+                {
+                    "guid": "12a51965-873c-4e32-ba7c-1ebabfcdd9eb",
+                    "id": "leather-pants",
+                    "type": "legs",
+                    "attribute": "defense",
+                    "attribute-amount": 1
+                },
+                {
+                    "guid": "7d757088-45fa-45ef-a1c5-89d50f8c92dc",
+                    "id": "health-ring",
+                    "type": "ring",
+                    "attribute": "health",
+                    "attribute-amount": 1
+                },
+                {
+                    "guid": "140bdbea-1c96-429a-b6fa-649d89b0440d",
+                    "id": "attack-speed-necklace",
+                    "type": "necklace",
+                    "attribute": "attack-speed",
+                    "attribute-amount": 0.1
+                },
+                {
+                    "guid": "0f5f2dd7-1518-4c96-9e47-28de3d954f34",
+                    "id": "attack-speed-ring",
+                    "type": "ring",
+                    "attribute": "attack-speed",
+                    "attribute-amount": 0.1
+                }
+            ],
+            "hidden": false,
+            "isProps": false,
+            "configurable": {
+                "name": "text",
+                "description": "text",
+                "displayColumn": "columnSelect@name",
+                "columnSelect@name@displayColumn": {
+                    "allowedTypes": [
+                        "int",
+                        "float",
+                        "text",
+                        "longtext"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "creatures",
+            "description": "All creatures, player and enemy",
+            "displayColumn": "id",
+            "guid": "2f21afa2-99c1-4676-839c-16dc576eb3f4",
+            "columns": [
+                {
+                    "typeStr": "float",
+                    "guid": "dbf2ee12-8a30-48a3-9894-362a6078d3ce",
+                    "description": "How much damage the enemy can take",
+                    "name": "health",
+                    "min": 1,
+                    "max": 100000,
+                    "defaultValue": 10,
+                    "iconName": "newFloat",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "float",
+                        "max": "float",
+                        "defaultValue": "float"
+                    }
+                },
+                {
+                    "typeStr": "float",
+                    "guid": "9c0253bf-9eec-4edc-9e27-4c0b186cdba6",
+                    "description": "The interval the enemy attacks at",
+                    "name": "attack-speed",
+                    "min": 0.1,
+                    "max": 6,
+                    "defaultValue": 2,
+                    "iconName": "newFloat",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "float",
+                        "max": "float",
+                        "defaultValue": "float"
+                    }
+                },
+                {
+                    "typeStr": "float",
+                    "guid": "8bc3a0a2-4350-4e20-9090-074ce5610432",
+                    "description": "How much gold the enemy drops when killed",
+                    "name": "value",
+                    "min": 1,
+                    "max": 100000,
+                    "defaultValue": 5,
+                    "iconName": "newFloat",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "float",
+                        "max": "float",
+                        "defaultValue": "float"
+                    }
+                },
+                {
+                    "typeStr": "float",
+                    "guid": "02eb402f-4b10-430a-b5ef-fed2b71233b3",
+                    "description": "How much damage the enemy does per attack",
+                    "name": "damage",
+                    "min": 1,
+                    "max": 100000,
+                    "defaultValue": 1,
+                    "iconName": "newFloat",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "float",
+                        "max": "float",
+                        "defaultValue": "float"
+                    }
+                },
+                {
+                    "typeStr": "float",
+                    "guid": "bcd8999c-aaed-43fb-8cf3-a55b0094398b",
+                    "description": "The natural defense value of the creature",
+                    "name": "defense",
+                    "min": 0,
+                    "max": 1000,
+                    "defaultValue": 0,
+                    "iconName": "newFloat",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "float",
+                        "max": "float",
+                        "defaultValue": "float"
+                    }
+                }
+            ],
+            "lines": [
+                {
+                    "guid": "d2e205f0-582d-471a-9b48-4dc65895d6e7",
+                    "id": "player",
+                    "health": 10,
+                    "attack-speed": 1,
+                    "value": 5,
+                    "damage": 2,
+                    "defense": 0
+                },
+                {
+                    "guid": "6c3341d4-1bb1-44f5-88a7-05982c3f5449",
+                    "id": "skeleton",
+                    "health": 5,
+                    "attack-speed": 2,
+                    "value": 5,
+                    "damage": 1,
+                    "defense": 0
+                },
+                {
+                    "guid": "186fb278-97ef-437f-8888-4822f3cf5152",
+                    "id": "orc",
+                    "health": 10,
+                    "attack-speed": 3,
+                    "value": 10,
+                    "damage": 4,
+                    "defense": 0
+                },
+                {
+                    "guid": "4a4f0d71-f20e-49bb-b6ce-2bde66057796",
+                    "id": "werebear",
+                    "health": 20,
+                    "attack-speed": 1.5,
+                    "value": 15,
+                    "damage": 2.5,
+                    "defense": 0
+                }
+            ],
+            "hidden": false,
+            "isProps": false,
+            "configurable": {
+                "name": "text",
+                "description": "text",
+                "displayColumn": "columnSelect@name",
+                "columnSelect@name@displayColumn": {
+                    "allowedTypes": [
+                        "int",
+                        "float",
+                        "text",
+                        "longtext"
+                    ]
+                }
+            }
+        }
+    ]
+}

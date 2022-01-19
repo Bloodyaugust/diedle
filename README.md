@@ -1,0 +1,3 @@
+# diedle
+
+An idle roguelike

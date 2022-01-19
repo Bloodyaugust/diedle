@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/themes/kenney/kenney.tres" type="Theme" id=1]
+[ext_resource path="res://views/Debug.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 1 )
+custom_constants/separation = 10
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyList" type="ItemList" parent="HBoxContainer"]
+margin_right = 150.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 150, 45 )
+
+[node name="SpawnEnemy" type="Button" parent="HBoxContainer"]
+margin_left = 160.0
+margin_right = 308.638
+margin_bottom = 45.0
+text = "Spawn Enemy"
+
+[node name="SpawnPlayer" type="Button" parent="HBoxContainer"]
+margin_left = 318.0
+margin_right = 472.638
+margin_bottom = 45.0
+text = "Spawn Player"
