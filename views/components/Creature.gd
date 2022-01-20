@@ -9,6 +9,7 @@ onready var _health:ProgressBar = find_node("Health")
 onready var _attack:ProgressBar = find_node("Attack")
 onready var _attack_damage:Label = find_node("AttackDamage")
 onready var _attack_dps:Label = find_node("AttackDPS")
+onready var _defense:Label = find_node("Defense")
 onready var _value:Label = find_node("Value")
 onready var _equipment_container:Control = find_node("Equipment")
 
@@ -29,6 +30,10 @@ func _on_creature_changed() -> void:
   _attack_dps.text = "(" + str(stepify((1 / creature.get_total_attribute("attack-speed")) * creature.get_total_attribute("damage"), 0.01)) + "/sec)"
   _attack.value = lerp(100, 0, creature._time_to_attack / creature.get_total_attribute("attack-speed"))
   _health.value = lerp(0, 100, creature._current_health / creature.get_total_attribute("health"))
+  _defense.text = "Defense: " + str(creature.get_total_attribute("defense"))
+
+  if creature.data.id == "player":
+    _value.visible = false
 
 func _ready():
   creature.connect("creature_equipment_changed", self, "_on_creature_equipment_changed")

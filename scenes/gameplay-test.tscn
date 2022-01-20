@@ -8,5 +8,8 @@
 [node name="UIRoot" type="CanvasLayer" parent="."]
 
 [node name="Combat" parent="UIRoot" instance=ExtResource( 1 )]
+anchor_top = 1.0
+margin_top = -292.0
+grow_vertical = 0
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 2 )]

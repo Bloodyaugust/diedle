@@ -79,14 +79,7 @@ func load_player() -> void:
   _equipment_container = find_node("Equipment")
 
   add_equipment("wooden-sword")
-  add_equipment("attack-speed-necklace")
-  add_equipment("attack-speed-necklace")
-  add_equipment("attack-speed-necklace")
-  add_equipment("attack-speed-necklace")
-  add_equipment("attack-speed-necklace")
-  add_equipment("attack-speed-necklace")
-  add_equipment("attack-speed-necklace")
-  add_equipment("attack-speed-necklace")
+  add_equipment("wooden-shield")
 
   _current_health = get_total_attribute("health")
   _time_to_attack = _get_time_to_attack()

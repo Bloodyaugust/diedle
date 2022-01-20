@@ -231,9 +231,9 @@
                 {
                     "guid": "d2e205f0-582d-471a-9b48-4dc65895d6e7",
                     "id": "player",
-                    "health": 10,
+                    "health": 50,
                     "attack-speed": 1,
-                    "value": 5,
+                    "value": 0,
                     "damage": 2,
                     "defense": 0
                 },
@@ -253,7 +253,7 @@
                     "attack-speed": 3,
                     "value": 10,
                     "damage": 4,
-                    "defense": 0
+                    "defense": 1
                 },
                 {
                     "guid": "4a4f0d71-f20e-49bb-b6ce-2bde66057796",
@@ -262,7 +262,7 @@
                     "attack-speed": 1.5,
                     "value": 15,
                     "damage": 2.5,
-                    "defense": 0
+                    "defense": 2
                 }
             ],
             "hidden": false,
