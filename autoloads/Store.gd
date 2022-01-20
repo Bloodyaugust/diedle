@@ -6,7 +6,8 @@ var persistent_store:PersistentStore
 var state: Dictionary = {
   "client_view": "",
   "debug": false,
-  "game": ""
+  "game": "",
+  "money": 0
  }
 
 func start_game() -> void:

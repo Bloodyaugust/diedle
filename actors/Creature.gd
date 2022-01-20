@@ -14,6 +14,7 @@ signal creature_died
 var data:Dictionary
 
 onready var _equipment_container = find_node("Equipment")
+onready var _name:Label = find_node("Name")
 onready var _state = CREATURE_STATES.IDLE
 onready var _tree := get_tree()
 
@@ -44,6 +45,9 @@ func damage(attack_data:Dictionary) -> void:
   print(data.id + " was damaged for " + str(_damage_after_defense))
 
   if _current_health <= 0:
+    if data.id != "player":
+      Store.set_state("money", Store.state.money + data.value)
+
     emit_signal("creature_died")
     queue_free()
     print(data.id + " died")
@@ -83,15 +87,15 @@ func load_player() -> void:
 
   _current_health = get_total_attribute("health")
   _time_to_attack = _get_time_to_attack()
-  add_to_group("player")
+  add_to_group("players")
 
 func _find_target() -> void:
   var _potential_targets:Array
 
-  if is_in_group("player"):
+  if is_in_group("players"):
     _potential_targets = _tree.get_nodes_in_group("enemies")
   else:
-    _potential_targets = _tree.get_nodes_in_group("player")
+    _potential_targets = _tree.get_nodes_in_group("players")
 
   if _potential_targets.size() > 0:
     _target = _potential_targets[0]
@@ -129,3 +133,6 @@ func _process(delta):
 
     CREATURE_STATES.IDLE:
       _time_to_attack = _get_time_to_attack()
+
+func _ready():
+  _name.text = data.id
