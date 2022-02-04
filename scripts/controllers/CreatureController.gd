@@ -7,6 +7,7 @@ const creature_scene:PackedScene = preload("res://actors/Creature.tscn")
 onready var _enemy_spawns:Array = get_tree().get_nodes_in_group("enemy_spawns")
 onready var _player_spawns:Array = get_tree().get_nodes_in_group("player_spawns")
 
+var _enemy_lines:Array
 var _spawn_slots:Dictionary
 
 func _on_creature_died(spawn) -> void:
@@ -16,7 +17,11 @@ func _on_store_state_changed(state_key:String, substate) -> void:
   match state_key:
     "game":
       match substate:
-        GameConstants
+        GameConstants.GAME_DELVE:
+          var _spawning_creatures:Array = _create_wave()
+
+          for _creature in _spawning_creatures:
+            spawn_enemy(_creature)
 
 func spawn_enemy(creature_id:String) -> void:
   var _enemies = get_tree().get_nodes_in_group("enemies")
@@ -49,8 +54,28 @@ func spawn_player() -> void:
     emit_signal("creature_spawned", _new_creature)
     print("Spawned player")
 
+func _create_wave() -> Array:
+  var _wave:Array = []
+  var _wave_value:float = 0
+  var _max_creatures:int = _spawn_slots.keys().size()
+  var _max_total_value:float = Store.state.money + 5
+
+  while _wave.size() < _max_creatures && _wave_value < _max_total_value:
+    var _potential_creature:Dictionary = _enemy_lines[randi() % _enemy_lines.size()]
+
+    if _wave_value + _potential_creature.value <= _max_total_value:
+      _wave_value += _potential_creature.value
+      _wave.append(_potential_creature.id)
+
+  return _wave
+
 func _ready():
   Store.connect("state_changed", self, "_on_store_state_changed")
 
   for _spawn in _enemy_spawns:
     _spawn_slots[_spawn] = null
+
+  _enemy_lines = []
+  for _line in Depot.get_lines("creatures"):
+    if _line.id != "player":
+      _enemy_lines.append(_line)
