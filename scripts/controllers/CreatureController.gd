@@ -12,6 +12,12 @@ var _spawn_slots:Dictionary
 func _on_creature_died(spawn) -> void:
   _spawn_slots[spawn] = null
 
+func _on_store_state_changed(state_key:String, substate) -> void:
+  match state_key:
+    "game":
+      match substate:
+        GameConstants
+
 func spawn_enemy(creature_id:String) -> void:
   var _enemies = get_tree().get_nodes_in_group("enemies")
 
@@ -43,6 +49,8 @@ func spawn_player() -> void:
     emit_signal("creature_spawned", _new_creature)
     print("Spawned player")
 
-func _ready():  
+func _ready():
+  Store.connect("state_changed", self, "_on_store_state_changed")
+
   for _spawn in _enemy_spawns:
     _spawn_slots[_spawn] = null
