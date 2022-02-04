@@ -13,6 +13,14 @@ var _spawn_slots:Dictionary
 func _on_creature_died(spawn) -> void:
   _spawn_slots[spawn] = null
 
+  var _wave_ended:bool = true
+  for _creature in _spawn_slots.values():
+    if _creature != null:
+      _wave_ended = false
+
+  if _wave_ended:
+    Store.set_state("game", GameConstants.GAME_REST)
+
 func _on_store_state_changed(state_key:String, substate) -> void:
   match state_key:
     "game":
@@ -22,6 +30,8 @@ func _on_store_state_changed(state_key:String, substate) -> void:
 
           for _creature in _spawning_creatures:
             spawn_enemy(_creature)
+
+          Store.set_state("game", GameConstants.GAME_COMBAT)
 
 func spawn_enemy(creature_id:String) -> void:
   var _enemies = get_tree().get_nodes_in_group("enemies")

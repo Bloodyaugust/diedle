@@ -29,6 +29,11 @@ func _on_store_state_changed(state_key:String, substate) -> void:
           _return.visible = false
           _delve.visible = false
         GameConstants.GAME_DELVE:
+          _in_combat.visible = true
+          _continue.visible = false
+          _return.visible = false
+          _delve.visible = false
+        GameConstants.GAME_REST:
           _in_combat.visible = false
           _continue.visible = true
           _return.visible = true
