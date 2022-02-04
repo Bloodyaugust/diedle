@@ -13,6 +13,7 @@ signal creature_died
 
 var data:Dictionary
 
+onready var _animation_player:AnimationPlayer = find_node("AnimationPlayer")
 onready var _equipment_container = find_node("Equipment")
 onready var _name:Label = find_node("Name")
 onready var _state = CREATURE_STATES.IDLE
@@ -35,6 +36,10 @@ func attack(creature:Node2D) -> void:
   }
 
   _target.damage(_attack_data)
+  if data.id == "player":
+    _animation_player.play("attack-player")
+  else:
+    _animation_player.play("attack-enemy")
   print(data.id + " attacked: " + _target.data.id + " for " + str(_attack_data.damage))
 
 func damage(attack_data:Dictionary) -> void:
@@ -44,13 +49,17 @@ func damage(attack_data:Dictionary) -> void:
   emit_signal("creature_changed")
   print(data.id + " was damaged for " + str(_damage_after_defense))
 
+  _animation_player.play("damaged")
   if _current_health <= 0:
-    if data.id != "player":
-      Store.set_state("money", Store.state.money + data.value)
+    _animation_player.play("die")
 
-    emit_signal("creature_died")
-    queue_free()
-    print(data.id + " died")
+func die() -> void:
+  if data.id != "player":
+    Store.set_state("money", Store.state.money + data.value)
+
+  emit_signal("creature_died")
+  queue_free()
+  print(data.id + " died")
 
 func get_equipment() -> Array:
   return _equipment_container.get_children()
