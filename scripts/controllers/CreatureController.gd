@@ -52,17 +52,18 @@ func spawn_enemy(creature_id:String) -> void:
     emit_signal("creature_spawned", _new_creature)
     print("Spawned enemy: " + creature_id)
 
-func spawn_player() -> void:
+func spawn_player(run:String = "") -> void:
   var _players = get_tree().get_nodes_in_group("players")
 
   if _players.size() < _player_spawns.size():
     var _new_creature := creature_scene.instance()
 
-    _new_creature.load_player()
+    _new_creature.load_player(run)
     get_tree().get_root().add_child(_new_creature)
     _new_creature.global_position = _player_spawns[_players.size() - 1].global_position
     emit_signal("creature_spawned", _new_creature)
     print("Spawned player")
+
 
 func _create_wave() -> Array:
   var _wave:Array = []

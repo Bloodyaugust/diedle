@@ -31,3 +31,9 @@ margin_left = 318.0
 margin_right = 472.638
 margin_bottom = 45.0
 text = "Spawn Player"
+
+[node name="LoadRun" type="Button" parent="HBoxContainer"]
+margin_left = 482.0
+margin_right = 584.638
+margin_bottom = 45.0
+text = "Load Run"

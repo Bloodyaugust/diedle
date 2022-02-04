@@ -86,13 +86,18 @@ func load_enemy(id:String) -> void:
   _time_to_attack = _get_time_to_attack()
   add_to_group("enemies")
 
-func load_player() -> void:
+func load_player(run:String = "") -> void:
   data = Depot.get_line("creatures", "player")
 
   _equipment_container = find_node("Equipment")
 
-  add_equipment("wooden-sword")
-  add_equipment("wooden-shield")
+  if run == "":
+    add_equipment("wooden-sword")
+    add_equipment("wooden-shield")
+  else:
+    var _run_data = Store.persistent_store.runs[run]
+    for _equipment in _run_data.equipment:
+      add_equipment(_equipment)
 
   _current_health = get_total_attribute("health")
   _time_to_attack = _get_time_to_attack()

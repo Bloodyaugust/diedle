@@ -7,12 +7,13 @@ var state: Dictionary = {
   "client_view": "",
   "debug": false,
   "game": "",
-  "money": 0
+  "money": 0,
+  "run": ""
  }
 
 func start_game() -> void:
   set_state("client_view", ClientConstants.CLIENT_VIEW_NONE)
-  set_state("game", GameConstants.GAME_CAMP)
+  set_state("game", GameConstants.GAME_OVER)
 
 func save_persistent_store() -> void:
   if ResourceSaver.save(ClientConstants.CLIENT_PERSISTENT_STORE_PATH, persistent_store) != OK:
@@ -25,7 +26,7 @@ func set_state(state_key: String, new_state) -> void:
   
 func _initialize():
   set_state("client_view", ClientConstants.CLIENT_VIEW_SPLASH)
-  set_state("game", GameConstants.GAME_CAMP)
+  set_state("game", GameConstants.GAME_OVER)
 
 func _ready():
   if Directory.new().file_exists(ClientConstants.CLIENT_PERSISTENT_STORE_PATH):

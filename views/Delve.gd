@@ -23,21 +23,31 @@ func _on_store_state_changed(state_key:String, substate) -> void:
           _continue.visible = false
           _return.visible = false
           _delve.visible = true
+          visible = true
         GameConstants.GAME_COMBAT:
           _in_combat.visible = true
           _continue.visible = false
           _return.visible = false
           _delve.visible = false
+          visible = true
         GameConstants.GAME_DELVE:
           _in_combat.visible = true
           _continue.visible = false
           _return.visible = false
           _delve.visible = false
+          visible = true
+        GameConstants.GAME_OVER:
+          _in_combat.visible = false
+          _continue.visible = false
+          _return.visible = false
+          _delve.visible = false
+          visible = false
         GameConstants.GAME_REST:
           _in_combat.visible = false
           _continue.visible = true
           _return.visible = true
           _delve.visible = false
+          visible = true
 
 func _ready():
   Store.connect("state_changed", self, "_on_store_state_changed")
