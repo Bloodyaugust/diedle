@@ -33,6 +33,7 @@ GDUtil="*res://lib/util/GDUtil.gd"
 ClientConstants="*res://constants/ClientConstants.gd"
 GameConstants="*res://constants/GameConstants.gd"
 CreatureController="*res://scripts/controllers/CreatureController.gd"
+CampController="*res://scripts/controllers/CampController.gd"
 
 [display]
 

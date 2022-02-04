@@ -68,6 +68,15 @@ func get_total_attribute(attribute:String) -> float:
 
   return _attribute_value
 
+func heal(amount:float) -> void:
+  _current_health += amount
+  _current_health = clamp(_current_health, 0, get_total_attribute("health"))
+  emit_signal("creature_changed")
+
+func heal_full() -> void:
+  _current_health = get_total_attribute("health")
+  emit_signal("creature_changed")
+
 func load_enemy(id:String) -> void:
   data = Depot.get_line("creatures", id)
 
