@@ -27,6 +27,7 @@ func _on_spawn_player_pressed() -> void:
   Store.save_persistent_store()
   Store.set_state("run", "debug_run")
   Store.set_state("game", GameConstants.GAME_CAMP)
+  Store.set_state("money", 0)
   CreatureController.spawn_player()
 
 func _input(event):

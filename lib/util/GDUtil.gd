@@ -17,6 +17,9 @@ static func free_children(node):
   for n in node.get_children():
       n.free()
 
+static func tilemap_global_cell_position(tilemap: TileMap, position: Vector2) -> Vector2:
+  return tilemap.to_global(tilemap.map_to_world(tilemap.world_to_map(tilemap.to_local(position))) + (tilemap.cell_size / 2))
+
 static func queue_free_children(node):
   for n in node.get_children():
       n.queue_free()

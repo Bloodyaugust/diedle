@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://views/components/Building.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://resources/themes/kenney/kenney.tres" type="Theme" id=3]
+
+[node name="Building" type="PanelContainer"]
+margin_right = 200.0
+margin_bottom = 78.0
+grow_horizontal = 0
+rect_min_size = Vector2( 200, 0 )
+mouse_default_cursor_shape = 2
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 193.0
+margin_bottom = 71.0
+mouse_default_cursor_shape = 2
+custom_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+mouse_default_cursor_shape = 2
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 74.0
+margin_right = 186.0
+margin_bottom = 64.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="Name" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 112.0
+margin_bottom = 24.0
+mouse_default_cursor_shape = 2
+text = "Campfire"
+autowrap = true
+
+[node name="Cost" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 112.0
+margin_bottom = 58.0
+mouse_default_cursor_shape = 2
+text = "$20"

@@ -15,5 +15,15 @@ func _on_creature_spawned(creature) -> void:
 
   _creatures_container.add_child(_new_creature_component)
 
+func _on_store_state_changed(state_key: String, substate) -> void:
+  match state_key:
+    "game":
+      match substate:
+        GameConstants.GAME_DELVE:
+          visible = true
+        _:
+          visible = false
+
 func _ready():
+  Store.connect("state_changed", self, "_on_store_state_changed")
   CreatureController.connect("creature_spawned", self, "_on_creature_spawned")

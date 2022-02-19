@@ -8,7 +8,8 @@ var state: Dictionary = {
   "debug": false,
   "game": "",
   "money": 0,
-  "run": ""
+  "run": "",
+  "building_selection": null
  }
 
 func start_game() -> void:
