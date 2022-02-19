@@ -280,6 +280,107 @@
                     ]
                 }
             }
+        },
+        {
+            "name": "buildings",
+            "description": "Buildings to place in the camp",
+            "displayColumn": "id",
+            "guid": "507aaf08-a0d4-4c59-ba6c-31c6d8485a54",
+            "columns": [
+                {
+                    "typeStr": "int",
+                    "guid": "2128fd21-7ba4-4798-86d9-0b49ea430b35",
+                    "description": "Money cost of the building",
+                    "name": "cost",
+                    "min": 1,
+                    "max": 100000,
+                    "defaultValue": 10,
+                    "iconName": "newInt",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "min": "int",
+                        "max": "int",
+                        "defaultValue": "int"
+                    }
+                },
+                {
+                    "typeStr": "list",
+                    "guid": "81bed841-ac3a-4a24-9c27-ca85adf9541c",
+                    "name": "prerequisites",
+                    "description": "Things needed to unlock the building",
+                    "sheet": "bd2ee5fa-c3cd-46b0-a8b7-e72b2bc7a7e1",
+                    "defaultValue": [],
+                    "iconName": "newList",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text"
+                    }
+                }
+            ],
+            "lines": [
+                {
+                    "guid": "0facbef5-df85-48b0-97b1-70595d2d6395",
+                    "id": "campfire",
+                    "cost": 0,
+                    "prerequisites": []
+                },
+                {
+                    "guid": "ae46c12b-3776-4c3a-8a48-920915c43ed5",
+                    "id": "tent",
+                    "cost": 10,
+                    "prerequisites": [
+                        {
+                            "guid": "7d377fe9-6a7e-4faf-b375-5f373a544902",
+                            "building": "0facbef5-df85-48b0-97b1-70595d2d6395",
+                            "id": "0"
+                        }
+                    ]
+                }
+            ],
+            "hidden": false,
+            "isProps": false,
+            "configurable": {
+                "name": "text",
+                "description": "text",
+                "displayColumn": "columnSelect@name",
+                "columnSelect@name@displayColumn": {
+                    "allowedTypes": [
+                        "int",
+                        "float",
+                        "text",
+                        "longtext"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "prerequisites",
+            "description": "list@507aaf08-a0d4-4c59-ba6c-31c6d8485a54",
+            "displayColumn": "id",
+            "guid": "bd2ee5fa-c3cd-46b0-a8b7-e72b2bc7a7e1",
+            "columns": [
+                {
+                    "typeStr": "lineReference",
+                    "guid": "b3e9bb60-ecea-40d4-9571-d27f20c28ab4",
+                    "name": "building",
+                    "description": "",
+                    "sheet": "507aaf08-a0d4-4c59-ba6c-31c6d8485a54",
+                    "defaultValue": "",
+                    "iconName": "newLineLink",
+                    "configurable": {
+                        "name": "text",
+                        "description": "text",
+                        "sheet": "sheetSelect",
+                        "defaultValue": "lineSelect@sheet"
+                    }
+                }
+            ],
+            "lines": [],
+            "hidden": true,
+            "isProps": false,
+            "parentSheetGUID": "507aaf08-a0d4-4c59-ba6c-31c6d8485a54",
+            "columnGUID": "81bed841-ac3a-4a24-9c27-ca85adf9541c"
         }
     ]
 }

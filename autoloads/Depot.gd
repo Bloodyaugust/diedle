@@ -53,3 +53,19 @@ func _init():
     for _line in _sheet.lines:
       for _line_reference in _line_references:
         _line[_line_reference] = guid_hash[_line[_line_reference]]
+
+    # Parse sheets that define a `parentSheetGUID` which are list definitions to replace references with full object
+    if _sheet.has("parentSheetGUID"):
+      var _entry_replace_key = _sheet.columns[0].name
+      var _parent_sheet = sheets[_sheet.parentSheetGUID]
+      var _parent_sheet_column_name
+
+      for _parent_sheet_column in _parent_sheet.columns:
+        if _parent_sheet_column.guid == _sheet.columnGUID:
+          _parent_sheet_column_name = _parent_sheet_column.name
+          break
+
+      if _parent_sheet_column_name:
+        for _line in _parent_sheet.lines:
+          for _entry in _line[_parent_sheet_column_name]:
+            _entry[_entry_replace_key] = guid_hash[_entry[_entry_replace_key]]
